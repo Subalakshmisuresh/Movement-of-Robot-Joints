@@ -1,4 +1,4 @@
-# Movement-of-Robot-Joints
+# EX 8: Movement-of-Robot-Joints
 ## Aim:  
 To move and drive the joints of the robot using python API.
 
@@ -13,104 +13,52 @@ Visual Components Premium 4.3
 3. 	In the script editor, add the code and then compile the code.
 
 ## Program
-```python
-#developed by: SUBALAKSHMI.S
-#register no: 212222100051
-from robomaster import robot
-import time
-from robomaster import camera
-
-if _name_ == '_main_':
-    ep_robot = robot.Robot()
-    ep_robot.initialize(conn_type="ap")
-
-    ep_chassis = ep_robot.chassis
-    ep_led = ep_robot.led
-    ep_camera = ep_robot.camera
-
-    print("Video streaming started.....")
-    ep_camera.start_video_stream(display=True, resolution = camera.STREAM_360P)
-
-    ep_chassis.move(x=2.3, y=0, z=0, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=255,g=0,b=0,effect="on")
-
-    ep_chassis.move(x=0.5, y=0, z=70, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=0,g=255,b=0,effect="on")
-
-    ep_chassis.move(x=0.5, y=0, z=0, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=0,g=0,b=255,effect="on")
-
-    ep_chassis.move(x=0.5, y=0, z=95, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=255,g=0,b=255,effect="on")
-
-    ep_chassis.move(x=1.5, y=0, z=0, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=0,g=255,b=255,effect="on")
-
-    ep_chassis.move(x=0, y=0, z=-115, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=255,g=255,b=153,effect="on")
-
-    ep_chassis.move(x=0, y=-1.4, z=0, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
-
-    ep_chassis.move(x=0, y=0, z=130, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=255,g=153,b=205,effect="on")
-
-    ep_chassis.move(x=1.55, y=0, z=0, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=204,g=153,b=255,effect="on")
-    
-    ep_chassis.move(x=0, y=0, z=190, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=153,g=204,b=255,effect="on")
-
-    ep_chassis.move(x=0, y=1, z=0, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=51,g=102,b=255,effect="on")
-
-    ep_chassis.move(x=0, y=0, z=90, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=255,g=204,b=0,effect="on")
-
-    ep_chassis.move(x=-1.2, y=0, z=0, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=0,g=51,b=102,effect="on")
-
-    ep_chassis.move(x=0, y=0, z=-100, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=0,g=255,b=0,effect="on")
-
-    ep_chassis.move(x=0.4, y=0, z=0, xy_speed=1.3).wait_for_completed()
-    ep_led.set_led(comp = "all",r=0,g=255,b=0,effect="on")
-
-
-
-    
-    time.sleep(4)
-    ep_camera.stop_video_stream()
-    print("Stopped video streaming.....")
-
-    ep_robot.close()
-
-    
-
-
-
-    
-    ep_robot.close()
-
-
-
-
-
+```
+Program Developed By: SUBALAKSHMI.S
+Register Number: 212222100051
+from vcScript import *
+from vcHelpers.Robot2 import *
+def OnRun():
+  pos=[[1,30],[2,40],[3,90]]
+  robot = getRobot()
+  robot.driveJoints(0,0,0,0,0,0)
+  delay(5)
+  for i in pos:
+    robot.Controller.moveJoint(i[0],i[1])
+    delay(5)
 
 ```
 ## Output
+### 1. Generic Articulated Robot
+![vc 1](https://github.com/Divya110205/Movement-of-Robot-Joints/assets/119404855/280c64f8-a3eb-46bf-a48e-ad7b595e42ed)
 
 
 
 
-## MobileRobot Movement Image:
-
-![image](https://github.com/Subalakshmisuresh/Movement-of-Robot-Joints/assets/121957896/9a918308-ab55-46e5-aecb-bf17ce42a3de)
-
+### 2. robot.driveJoints(0,0,0,0,0,0)
+![vc 2](https://github.com/Divya110205/Movement-of-Robot-Joints/assets/119404855/ace04059-707a-40a5-8234-545b1cfd31ba)
 
 
+### 3. Movement of Joint1
+![vc 3](https://github.com/Divya110205/Movement-of-Robot-Joints/assets/119404855/b3c06a4b-3dd2-40f5-a7e2-544dbd1d0ad7)
 
-## Result:
-Thus the python program code is developed to move the mobilerobot in the predefined path.
+
+### 4. Movement of Joint2
+![vc 4](https://github.com/Divya110205/Movement-of-Robot-Joints/assets/119404855/ad5f8f7d-f838-4860-9c62-8a93f4602fb3)
+
+### 5. Movement of Joint3
+![vc 5](https://github.com/Divya110205/Movement-of-Robot-Joints/assets/119404855/4e3b0b85-df67-470c-932b-0962c386dd62)
+
+
+## Result 
+Thus the different robots joints are moved with the help of python list.
+
+
+    
+ 
+
+
+  
+
 
 
